@@ -7,7 +7,7 @@ set_allowedplats("windows", "mingw", "linux")
 add_rules("mode.debug", "mode.release")
 set_languages("cxx20")
 
-add_requires("glfw", "spdlog v1.9.0", "volk")
+add_requires("glfw", "spdlog v1.9.0", "volk", "stb")
 
 local outputdir = "$(mode)-$(os)-$(arch)"
     
@@ -55,7 +55,7 @@ target("VulkanTests")
 
     set_pcxxheader("Include/VulkanTests/pch.hpp")
 
-    add_packages("glfw", "spdlog", "volk")
+    add_packages("glfw", "spdlog", "volk", "stb")
     
     if has_config("tracy") then
         add_defines("TRACY_ENABLE")
