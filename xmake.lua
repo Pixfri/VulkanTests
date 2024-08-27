@@ -48,6 +48,11 @@ target("VulkanTests")
         remove_files("Source/VulkanTests/Platform/Win32/**.cpp")
     end
 
+    if not has_config("tracy") then
+        remove_headerfiles("Include/VulkanTests/Core/Profiling.hpp", "Include/VulkanTests/Core/Profiling.inl")
+        remove_files("Source/VulkanTests/Core/Profiling.cpp")
+    end
+
     set_pcxxheader("Include/VulkanTests/pch.hpp")
 
     add_packages("glfw", "spdlog", "volk")
