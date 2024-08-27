@@ -13,7 +13,7 @@ void* operator new(size_t count) {
     return ptr;
 }
 
-void operator delete(void* ptr) {
+void operator delete(void* ptr) noexcept {
     TracyFree(ptr);
     free(ptr);
 }

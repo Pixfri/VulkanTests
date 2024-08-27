@@ -29,9 +29,9 @@ namespace VkTests {
         PlatformContext& operator=(const PlatformContext&) = delete;
         PlatformContext& operator=(PlatformContext&&) = delete;
 
-        [[nodiscard]] inline virtual const std::vector<std::string>& Arguments();
-        [[nodiscard]] inline virtual const std::string& ExternalStorageDirectory();
-        [[nodiscard]] inline virtual const std::string& TempDirectory();
+        [[nodiscard]] inline virtual const std::vector<std::string>& Arguments() const;
+        [[nodiscard]] inline virtual const std::string& ExternalStorageDirectory() const;
+        [[nodiscard]] inline virtual const std::string& TempDirectory() const;
 
     protected:
         std::vector<std::string> m_Arguments;

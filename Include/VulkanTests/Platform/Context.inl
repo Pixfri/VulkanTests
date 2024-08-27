@@ -5,15 +5,15 @@
 #pragma once
 
 namespace VkTests {
-    inline const std::vector<std::string>& PlatformContext::Arguments() {
+    inline const std::vector<std::string>& PlatformContext::Arguments() const {
         return m_Arguments;
     }
 
-    inline const std::string& PlatformContext::ExternalStorageDirectory() {
+    inline const std::string& PlatformContext::ExternalStorageDirectory() const {
         return m_ExternalStorageDirectory;
     }
 
-    inline const std::string& PlatformContext::TempDirectory() {
+    inline const std::string& PlatformContext::TempDirectory() const {
         return m_TempDirectory;
     }
 }
