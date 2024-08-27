@@ -4,12 +4,12 @@
 
 #pragma once
 
-#ifndef VK_TESTS_FRAMEWORK_CORE_WINDOW_HPP
-#define VK_TESTS_FRAMEWORK_CORE_WINDOW_HPP
+#ifndef VK_TESTS_CORE_WINDOW_HPP
+#define VK_TESTS_CORE_WINDOW_HPP
 
 #include <VulkanTests/pch.hpp>
 
-#include <VulkanTests/Framework/Core/Event.hpp>
+#include <VulkanTests/Core/Event.hpp>
 
 #include <GLFW/glfw3.h>
 
@@ -187,6 +187,6 @@ namespace VkTests {
     };
 }
 
-#include <VulkanTests/Framework/Core/Window.inl>
+#include <VulkanTests/Core/Window.inl>
 
-#endif // VK_TESTS_FRAMEWORK_CORE_WINDOW_HPP
+#endif // VK_TESTS_CORE_WINDOW_HPP

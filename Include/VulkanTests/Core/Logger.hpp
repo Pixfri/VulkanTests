@@ -58,5 +58,5 @@ namespace VkTests {
         constexpr void Fatal(ErrorCode errorCode, Args&&... args);
     }
 
-#include <VulkanTests/Framework/Core/Logger.inl>
+#include <VulkanTests/Core/Logger.inl>
 }

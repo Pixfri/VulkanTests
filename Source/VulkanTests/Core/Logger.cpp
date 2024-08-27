@@ -2,7 +2,7 @@
 // This file is part of Vulkan Tests.
 // For conditions of distribution and use, see copyright notice in LICENSE
 
-#include <VulkanTests/Framework/Core/Logger.hpp>
+#include <VulkanTests/Core/Logger.hpp>
 
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/sinks/base_sink.h>

@@ -2,20 +2,33 @@ set_xmakever("2.9.3")
 
 set_project("VulkanTests")
 
-set_allowedplats("windows", "linux")
+set_allowedplats("windows", "mingw", "linux")
 
 add_rules("mode.debug", "mode.release")
 set_languages("cxx20")
-set_optimize("fastest")
 
 add_requires("glfw", "spdlog v1.9.0", "volk")
 
 local outputdir = "$(mode)-$(os)-$(arch)"
+    
+if is_plat("windows", "mingw") then
+    add_defines("VK_TESTS_PLATFORM_WINDOWS")
+    add_defines("WIN32_LEAN_AND_MEAN", "NOMINMAX")
+elseif is_plat("linux") then
+    add_defines("VK_TESTS_PLATFORM_UNIX")
+end
 
-rule("cp-resources")
-    after_build(function (target)
-        os.cp(target:name() .. "/Resources", "build/" .. outputdir .. "/" .. target:name() .. "/bin")
-    end)
+if is_mode("debug") then
+    add_defines("VK_TESTS_DEBUG")
+else
+    set_optimize("fastest")
+end
+
+option("tracy", {description = "Enable tracy frame debugger", default = false, type = "boolean"})
+
+if has_config("tracy") then
+    add_requires("tracy")    
+end
 
 target("VulkanTests")
     set_kind("binary")
@@ -26,9 +39,22 @@ target("VulkanTests")
     add_files("Source/**.cpp")
     add_headerfiles("Include/**.hpp", "Include/**.inl")
     add_includedirs("Include")
+    
+    if is_plat("windows", "mingw") then
+        remove_headerfiles("Include/VulkanTests/Platform/Unix/**.hpp")
+        remove_files("Source/VulkanTests/Platform/Unix/**.cpp")
+    elseif is_plat("linux") then
+        remove_headerfiles("Include/VulkanTests/Platform/Win32/**.hpp")
+        remove_files("Source/VulkanTests/Platform/Win32/**.cpp")
+    end
 
     set_pcxxheader("Include/VulkanTests/pch.hpp")
 
     add_packages("glfw", "spdlog", "volk")
+    
+    if has_config("tracy") then
+        add_defines("TRACY_ENABLE")
+        add_packages("tracy")
+    end
 
 includes("xmake/**.lua")

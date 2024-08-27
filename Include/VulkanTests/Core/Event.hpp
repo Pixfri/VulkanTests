@@ -4,8 +4,8 @@
 
 #pragma once
 
-#ifndef VK_TESTS_FRAMEWORK_CORE_EVENT_HPP
-#define VK_TESTS_FRAMEWORK_CORE_EVENT_HPP
+#ifndef VK_TESTS_CORE_EVENT_HPP
+#define VK_TESTS_CORE_EVENT_HPP
 
 #include <VulkanTests/pch.hpp>
 
@@ -69,9 +69,9 @@ virtual Int32 GetCategoryFlags() const override { return IntegerFromEnum(categor
 
         [[nodiscard]] virtual inline std::string ToString() const;
 
-        inline bool IsInCategory(EventCategory category) const;
+        [[nodiscard]] inline bool IsInCategory(EventCategory category) const;
 
-        inline bool IsHandled() const;
+        [[nodiscard]] inline bool IsHandled() const;
 
         inline void Stop();
     };
@@ -335,5 +335,5 @@ virtual Int32 GetCategoryFlags() const override { return IntegerFromEnum(categor
 
 }
 
-#include <VulkanTests/Framework/Core/Event.inl>
-#endif // VK_TESTS_FRAMEWORK_CORE_EVENT_HPP 
+#include <VulkanTests/Core/Event.inl>
+#endif // VK_TESTS_CORE_EVENT_HPP 

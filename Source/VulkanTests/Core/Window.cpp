@@ -2,9 +2,9 @@
 // This file is part of Vulkan Tests.
 // For conditions of distribution and use, see copyright notice in LICENSE
 
-#include <VulkanTests/Framework/Core/Window.hpp>
+#include <VulkanTests/Core/Window.hpp>
 
-#include <VulkanTests/Framework/Core/Logger.hpp>
+#include <VulkanTests/Core/Logger.hpp>
 
 namespace VkTests {
     Window::Window(const WindowProperties& windowProperties) {
