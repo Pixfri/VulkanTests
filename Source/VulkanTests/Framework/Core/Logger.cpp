@@ -44,27 +44,23 @@ namespace VkTests {
     }
 
     namespace Log {
-        std::string EvaluateErrorCode(const ErrorCode& errorCode) {
-            std::stringstream message;
+        std::string_view EvaluateErrorCode(const ErrorCode& errorCode) {
             switch (errorCode.ModuleId) {
             case 0x00:
-                message << "[APPLICATION]";
-                break;
-                
+                return "[APPLICATION]";
+
             case 0x01:
-                message << "[CORE]";
-                break;
-                
+                return "[CORE]";
+
             case 0x02:
-                message << "[RENDERER] ";
-                break;
+                return "[RENDERER]";
+
+            case 0x03:
+                return "[FILESYSTEM]";
 
             default:
-                message << "[INVALID/UNKNOWN MODULE ID]";
-                break;
+                return "[INVALID/UNKNOWN MODULE ID]";
             }
-
-            return message.str();
         }
     }
 }

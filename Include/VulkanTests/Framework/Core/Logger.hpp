@@ -37,7 +37,7 @@ namespace VkTests {
 
 
     namespace Log {
-        std::string EvaluateErrorCode(const ErrorCode& errorCode); 
+        std::string_view EvaluateErrorCode(const ErrorCode& errorCode); 
         
         template <typename... Args>
         constexpr void Trace(Args&&... args);
