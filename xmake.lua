@@ -7,7 +7,10 @@ set_allowedplats("windows", "mingw", "linux")
 add_rules("mode.debug", "mode.release")
 set_languages("cxx20")
 
+add_repositories("pixfri https://github.com/Pixfri/xmake-repo")
+
 add_requires("glfw", "glm", "spdlog v1.9.0", "volk", "vulkan-memory-allocator", "glslang", "stb")
+add_requires("ktx")
 
 local outputdir = "$(mode)-$(os)-$(arch)"
     
@@ -57,7 +60,7 @@ target("VulkanTests")
 
     set_pcxxheader("Include/VulkanTests/pch.hpp")
 
-    add_packages("glfw", "glm", "spdlog", "volk", "vulkan-memory-allocator", "glslang", "stb")
+    add_packages("glfw", "glm", "spdlog", "volk", "vulkan-memory-allocator", "glslang", "stb", "ktx")
     
     if has_config("tracy") then
         add_defines("TRACY_ENABLE")
