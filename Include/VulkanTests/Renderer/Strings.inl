@@ -683,8 +683,8 @@ namespace VkTests {
 		return surfaceFormatString;
 	}
 
-	std::string ToString(VkCompositeAlphaFlagBitsKHR composite_alpha) {
-		switch (composite_alpha) {
+	std::string ToString(const VkCompositeAlphaFlagBitsKHR compositeAlpha) {
+		switch (compositeAlpha) {
 		case VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR:
 			return "VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR";
 		case VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR:
@@ -700,8 +700,8 @@ namespace VkTests {
 		}
 	}
 
-	std::string ToString(VkImageUsageFlagBits image_usage) {
-		switch (image_usage) {
+	std::string ToString(const VkImageUsageFlagBits imageUsage) {
+		switch (imageUsage) {
 		case VK_IMAGE_USAGE_TRANSFER_SRC_BIT:
 			return "VK_IMAGE_USAGE_TRANSFER_SRC_BIT";
 		case VK_IMAGE_USAGE_TRANSFER_DST_BIT:
@@ -725,7 +725,7 @@ namespace VkTests {
 		}
 	}
 
-	std::string ToString(VkExtent2D extent) {
+	std::string ToString(const VkExtent2D extent) {
 		return fmt::format("{}x{}", extent.width, extent.height);
 	}
 

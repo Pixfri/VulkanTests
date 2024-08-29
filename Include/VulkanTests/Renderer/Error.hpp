@@ -14,7 +14,7 @@
 #include <VulkanTests/Core/Logger.hpp>
 
 namespace VkTests {
-	class VulkanException final : public std::runtime_error {
+	class VulkanException : public std::runtime_error {
 	public:
 		explicit VulkanException(VkResult result, const std::string& message = "Vulkan error");
 

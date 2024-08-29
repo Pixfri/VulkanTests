@@ -86,10 +86,10 @@ namespace VkTests {
 
 	/**
 	 * @brief Helper function to convert a VkExtent2D flag to a string
-	 * @param format Vulkan format to convert.
+	 * @param extent Vulkan format to convert.
 	 * @return The string to return.
 	 */
-	inline std::string ToString(VkExtent2D format);
+	inline std::string ToString(VkExtent2D extent);
 
 	/**
 	 * @brief Helper function to convert VkSampleCountFlagBits to a string
