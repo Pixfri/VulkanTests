@@ -10,14 +10,14 @@
 #include <VulkanTests/pch.hpp>
 
 namespace VkTests {
-    inline void HashCombine(USize &seed, USize hash);
+	inline void HashCombine(USize& seed, USize hash);
 
-    /**
-     * @brief Helper function to combine a given hash
-     *        with a generated hash for the input param.
-     */
-    template <class T>
-    void HashCombine(USize &seed, const T& value);
+	/**
+	 * @brief Helper function to combine a given hash
+	 *        with a generated hash for the input param.
+	 */
+	template <class T>
+	void HashCombine(USize& seed, const T& value);
 }
 
 #include <VulkanTests/Utils/Hash.inl>

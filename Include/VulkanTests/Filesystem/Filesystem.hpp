@@ -12,55 +12,55 @@
 #include <VulkanTests/Platform/Context.hpp>
 
 namespace VkTests::Filesystem {
-    struct FileStat {
-        bool IsFile;
-        bool IsDirectory;
-        USize Size;
-    };
+	struct FileStat {
+		bool IsFile;
+		bool IsDirectory;
+		USize Size;
+	};
 
-    using Path = std::filesystem::path;
-    
-    class Filesystem {
-    public:
-        Filesystem() = default;
-        virtual ~Filesystem() = default;
+	using Path = std::filesystem::path;
 
-        Filesystem(const Filesystem&) = delete;
-        Filesystem(Filesystem&&) = delete;
+	class Filesystem {
+	public:
+		Filesystem() = default;
+		virtual ~Filesystem() = default;
 
-        Filesystem& operator=(const Filesystem&) = delete;
-        Filesystem& operator=(Filesystem&&) = delete;
+		Filesystem(const Filesystem&) = delete;
+		Filesystem(Filesystem&&) = delete;
 
-        [[nodiscard]] virtual FileStat           StatFile(const Path& path)                                  = 0; 
-        [[nodiscard]] virtual bool               IsFile(const Path& path)                                    = 0;
-        [[nodiscard]] virtual bool               IsDirectory(const Path& path)                               = 0;
-        [[nodiscard]] virtual bool               Exists(const Path& path)                                    = 0;
-        [[nodiscard]] virtual bool               CreateDirectory(const Path& path)                           = 0;
-        [[nodiscard]] virtual std::vector<UInt8> ReadChunk(const Path& path, USize offset, USize count)      = 0;
-                      virtual void               WriteFile(const Path& path, const std::vector<UInt8>& data) = 0;
-                      virtual void               Remove(const Path& path)                                    = 0;
+		Filesystem& operator=(const Filesystem&) = delete;
+		Filesystem& operator=(Filesystem&&) = delete;
 
-                      virtual void        SetExternalStorageDirectory(const std::string& dir)  = 0;
-        [[nodiscard]] virtual const Path& ExternalStorageDirectory() const                     = 0;
-        [[nodiscard]] virtual const Path& TempDirectory() const                                = 0;
+		[[nodiscard]] virtual FileStat StatFile(const Path& path) = 0;
+		[[nodiscard]] virtual bool IsFile(const Path& path) = 0;
+		[[nodiscard]] virtual bool IsDirectory(const Path& path) = 0;
+		[[nodiscard]] virtual bool Exists(const Path& path) = 0;
+		[[nodiscard]] virtual bool CreateDirectory(const Path& path) = 0;
+		[[nodiscard]] virtual std::vector<UInt8> ReadChunk(const Path& path, USize offset, USize count) = 0;
+		virtual void WriteFile(const Path& path, const std::vector<UInt8>& data) = 0;
+		virtual void Remove(const Path& path) = 0;
 
-        inline void WriteFile(const Path& path, const std::string& data);
+		virtual void SetExternalStorageDirectory(const std::string& dir) = 0;
+		[[nodiscard]] virtual const Path& ExternalStorageDirectory() const = 0;
+		[[nodiscard]] virtual const Path& TempDirectory() const = 0;
 
-        // Read the entire file into a string.
-        [[nodiscard]] inline std::string ReadFileString(const Path& path);
+		inline void WriteFile(const Path& path, const std::string& data);
 
-        // Read the entire file into a vector of bytes.
-        [[nodiscard]] inline std::vector<UInt8> ReadFileBinary(const Path& path);
-    };
+		// Read the entire file into a string.
+		[[nodiscard]] inline std::string ReadFileString(const Path& path);
 
-    using FilesystemPtr = std::shared_ptr<Filesystem>;
+		// Read the entire file into a vector of bytes.
+		[[nodiscard]] inline std::vector<UInt8> ReadFileBinary(const Path& path);
+	};
 
-    void Initialize();
+	using FilesystemPtr = std::shared_ptr<Filesystem>;
 
-    void InitializeWithContext(const PlatformContext& context);
+	void Initialize();
 
-    // Get the filesystem instance.
-    FilesystemPtr Get();
+	void InitializeWithContext(const PlatformContext& context);
+
+	// Get the filesystem instance.
+	FilesystemPtr Get();
 }
 
 #include <VulkanTests/Filesystem/Filesystem.inl>

@@ -10,20 +10,20 @@
 #include <VulkanTests/pch.hpp>
 
 namespace VkTests {
-    /**
-     * @brief Replaces all occurrences of a substring with another substring.
-     */
-    std::string ReplaceAll(std::string str, const std::string& from, const std::string& to);
+	/**
+	 * @brief Replaces all occurrences of a substring with another substring.
+	 */
+	std::string ReplaceAll(std::string str, const std::string& from, const std::string& to);
 
-    /**
-     * @brief Removes all occurrences of a set of characters from the end of a string.
-     */
-    std::string TrimRight(const std::string& str, const std::string& chars = "\t\n\v\f\r\b ");
+	/**
+	 * @brief Removes all occurrences of a set of characters from the end of a string.
+	 */
+	std::string TrimRight(const std::string& str, const std::string& chars = "\t\n\v\f\r\b ");
 
-    /**
-     * @brief Removes all occurrences of a set of characters from the beginning of a string.
-     */    
-    std::string TrimLeft(const std::string& str, const std::string& chars = "\t\n\v\f\r\b ");
+	/**
+	 * @brief Removes all occurrences of a set of characters from the beginning of a string.
+	 */
+	std::string TrimLeft(const std::string& str, const std::string& chars = "\t\n\v\f\r\b ");
 }
 
 #include <VulkanTests/Utils/Strings.inl>

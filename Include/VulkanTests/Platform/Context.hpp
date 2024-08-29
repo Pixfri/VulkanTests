@@ -10,36 +10,36 @@
 #include <VulkanTests/pch.hpp>
 
 namespace VkTests {
-    class UnixPlatformContext;
-    class WindowsPlatformContext;
-    
-    /**
-     * @brief A platform context contains abstract platform specific operations
-     */
-    class PlatformContext {
-        friend class UnixPlatformContext;
-        friend class WindowsPlatformContext;
-        
-    public:
-        virtual ~PlatformContext() = default;
+	class UnixPlatformContext;
+	class WindowsPlatformContext;
 
-        PlatformContext(const PlatformContext&) = delete;
-        PlatformContext(PlatformContext&&) = delete;
+	/**
+	 * @brief A platform context contains abstract platform specific operations
+	 */
+	class PlatformContext {
+		friend class UnixPlatformContext;
+		friend class WindowsPlatformContext;
 
-        PlatformContext& operator=(const PlatformContext&) = delete;
-        PlatformContext& operator=(PlatformContext&&) = delete;
+	public:
+		virtual ~PlatformContext() = default;
 
-        [[nodiscard]] inline virtual const std::vector<std::string>& Arguments() const;
-        [[nodiscard]] inline virtual const std::string& ExternalStorageDirectory() const;
-        [[nodiscard]] inline virtual const std::string& TempDirectory() const;
+		PlatformContext(const PlatformContext&) = delete;
+		PlatformContext(PlatformContext&&) = delete;
 
-    protected:
-        std::vector<std::string> m_Arguments;
-        std::string m_ExternalStorageDirectory;
-        std::string m_TempDirectory;
+		PlatformContext& operator=(const PlatformContext&) = delete;
+		PlatformContext& operator=(PlatformContext&&) = delete;
 
-        PlatformContext() = default;
-    };
+		[[nodiscard]] inline virtual const std::vector<std::string>& Arguments() const;
+		[[nodiscard]] inline virtual const std::string& ExternalStorageDirectory() const;
+		[[nodiscard]] inline virtual const std::string& TempDirectory() const;
+
+	protected:
+		std::vector<std::string> m_Arguments;
+		std::string m_ExternalStorageDirectory;
+		std::string m_TempDirectory;
+
+		PlatformContext() = default;
+	};
 }
 
 #include <VulkanTests/Platform/Context.inl>

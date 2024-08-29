@@ -7,7 +7,7 @@ set_allowedplats("windows", "mingw", "linux")
 add_rules("mode.debug", "mode.release")
 set_languages("cxx20")
 
-add_requires("glfw", "spdlog v1.9.0", "volk", "stb")
+add_requires("glfw", "glm", "spdlog v1.9.0", "volk", "vulkan-memory-allocator", "glslang", "stb")
 
 local outputdir = "$(mode)-$(os)-$(arch)"
     
@@ -29,6 +29,8 @@ option("tracy", {description = "Enable tracy frame debugger", default = false, t
 if has_config("tracy") then
     add_requires("tracy")    
 end
+
+add_defines("VK_NO_PROTOTYPES")
 
 target("VulkanTests")
     set_kind("binary")
@@ -55,7 +57,7 @@ target("VulkanTests")
 
     set_pcxxheader("Include/VulkanTests/pch.hpp")
 
-    add_packages("glfw", "spdlog", "volk", "stb")
+    add_packages("glfw", "glm", "spdlog", "volk", "vulkan-memory-allocator", "glslang", "stb")
     
     if has_config("tracy") then
         add_defines("TRACY_ENABLE")

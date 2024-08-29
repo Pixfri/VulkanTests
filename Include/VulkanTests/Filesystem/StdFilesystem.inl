@@ -5,32 +5,32 @@
 #pragma once
 
 namespace VkTests::Filesystem {
-    inline StdFilesystem::StdFilesystem(Path externalStorageDirectory, Path tempDirectory) :
-        m_ExternalStorageDirectory(std::move(externalStorageDirectory)), m_TempDirectory(std::move(tempDirectory)) {
-    }
+	inline StdFilesystem::StdFilesystem(Path externalStorageDirectory, Path tempDirectory) :
+		m_ExternalStorageDirectory(std::move(externalStorageDirectory)), m_TempDirectory(std::move(tempDirectory)) {
+	}
 
-    inline bool StdFilesystem::IsFile(const Path& path) {
-        return StatFile(path).IsFile;
-    }
+	inline bool StdFilesystem::IsFile(const Path& path) {
+		return StatFile(path).IsFile;
+	}
 
-    inline bool StdFilesystem::IsDirectory(const Path& path) {
-        return StatFile(path).IsDirectory;
-    }
+	inline bool StdFilesystem::IsDirectory(const Path& path) {
+		return StatFile(path).IsDirectory;
+	}
 
-    inline bool StdFilesystem::Exists(const Path& path) {
-        const auto stat = StatFile(path);
-        return stat.IsFile || stat.IsDirectory;
-    }
+	inline bool StdFilesystem::Exists(const Path& path) {
+		const auto stat = StatFile(path);
+		return stat.IsFile || stat.IsDirectory;
+	}
 
-    inline void StdFilesystem::SetExternalStorageDirectory(const std::string& dir) {
-        m_ExternalStorageDirectory = dir;
-    }
+	inline void StdFilesystem::SetExternalStorageDirectory(const std::string& dir) {
+		m_ExternalStorageDirectory = dir;
+	}
 
-    inline const Path& StdFilesystem::ExternalStorageDirectory() const {
-        return m_ExternalStorageDirectory;
-    }
+	inline const Path& StdFilesystem::ExternalStorageDirectory() const {
+		return m_ExternalStorageDirectory;
+	}
 
-    inline const Path& StdFilesystem::TempDirectory() const {
-        return m_TempDirectory;
-    }
+	inline const Path& StdFilesystem::TempDirectory() const {
+		return m_TempDirectory;
+	}
 }

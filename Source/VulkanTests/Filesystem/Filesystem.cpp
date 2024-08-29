@@ -6,21 +6,20 @@
 #include <VulkanTests/Filesystem/StdFilesystem.hpp>
 
 namespace VkTests::Filesystem {
-    namespace {
-        FilesystemPtr g_filesystem = nullptr;
-    }
+	namespace {
+		FilesystemPtr g_filesystem = nullptr;
+	}
 
-    void Initialize() {
-        g_filesystem = std::make_shared<StdFilesystem>();
-    }
+	void Initialize() {
+		g_filesystem = std::make_shared<StdFilesystem>();
+	}
 
-    void InitializeWithContext(const PlatformContext& context) {
-        g_filesystem = std::make_shared<StdFilesystem>(context.ExternalStorageDirectory(), context.TempDirectory());
-    }
+	void InitializeWithContext(const PlatformContext& context) {
+		g_filesystem = std::make_shared<StdFilesystem>(context.ExternalStorageDirectory(), context.TempDirectory());
+	}
 
-    FilesystemPtr Get() {
-        assert(g_filesystem && "Filesystem not initialized.");
-        return g_filesystem;
-    }
-
+	FilesystemPtr Get() {
+		assert(g_filesystem && "Filesystem not initialized.");
+		return g_filesystem;
+	}
 }

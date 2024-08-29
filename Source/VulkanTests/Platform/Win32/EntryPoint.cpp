@@ -8,5 +8,5 @@
 
 std::unique_ptr<VkTests::PlatformContext> CreatePlatformContext(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                                                                 PSTR lpCmdLine, INT nCmdShow) {
-    return std::make_unique<VkTests::WindowsPlatformContext>(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
+	return std::make_unique<VkTests::WindowsPlatformContext>(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
 }

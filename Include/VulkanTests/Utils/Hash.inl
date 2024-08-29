@@ -5,15 +5,15 @@
 #pragma once
 
 namespace VkTests {
-    inline void HashCombine(USize &seed, USize hash) {
-        hash += 0x9e3779B9 + (seed << 6) + (seed >> 2);
-        seed ^= hash;
-    }
+	inline void HashCombine(USize& seed, USize hash) {
+		hash += 0x9e3779B9 + (seed << 6) + (seed >> 2);
+		seed ^= hash;
+	}
 
-    template <class T>
-    void HashCombine(USize &seed, const T& value) {
-        std::hash<T> hasher;
+	template <class T>
+	void HashCombine(USize& seed, const T& value) {
+		std::hash<T> hasher;
 
-        HashCombine(seed, hasher(value));
-    }
+		HashCombine(seed, hasher(value));
+	}
 }

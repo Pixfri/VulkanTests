@@ -31,14 +31,14 @@ void operator delete(void* ptr) noexcept;
 #endif // TRACY_ENABLE
 
 enum class PlotType : VkTests::UInt8 {
-    Number,
-    Percentage,
-    Memory
+	Number,
+	Percentage,
+	Memory
 };
 
 #ifdef TRACY_ENABLE
 namespace {
-    tracy::PlotFormatType ToTracyPlotFormat(PlotType plotType);
+	tracy::PlotFormatType ToTracyPlotFormat(PlotType plotType);
 }
 
 #define TO_TRACY_PLOT_FORMAT(plotType) ToTracyPlotFormat(plotType)
@@ -50,17 +50,17 @@ namespace {
 template <typename T, PlotType Pt = PlotType::Number>
 class Plot {
 public:
-    static void AddPlot(const char* name, T* value);
-    static void Increment(const char* name, T amount);
-    static void Decrement(const char* name, T amount);
-    static void Reset(const char* name);
+	static void AddPlot(const char* name, T* value);
+	static void Increment(const char* name, T amount);
+	static void Decrement(const char* name, T amount);
+	static void Reset(const char* name);
 
 private:
-    static void UpdatePlot(const char* name, T* value);
+	static void UpdatePlot(const char* name, T* value);
 
-    static Plot* GetInstance();
+	static Plot* GetInstance();
 
-    std::unordered_map<const char*, T> m_Plots;
+	std::unordered_map<const char*, T> m_Plots;
 };
 
 #include <VulkanTests/Core/Profiling.inl>
