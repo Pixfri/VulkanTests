@@ -30,8 +30,14 @@ end
 option("tracy", {description = "Enable tracy frame debugger", default = false, type = "boolean"})
 
 if has_config("tracy") then
-    add_requires("tracy")    
+    add_requires("tracy")
 end
+
+option("vk-validation-layers", {description = "Enable Vulkan validation layers (requires the Vulkan SDK to be installed on your machine)", default = is_mode("debug"), type = "boolean"})
+option("vk-validation-layers-gpu-assisted", {description = "Enable GPU-assisted validation layers", default = false, type = "boolean"})
+option("vk-validation-layers-best-practices", {description = "Enable best practices validation layers", default = false, type = "boolean"})
+option("vk-validation-layers-synchronization", {description = "Enable synchronization validation layers", default = false, type = "boolean"})
+option("vk-portability", {description = "Enable Vulkan Portability Enumeration and Portability Subset extensions", default = false, type = "boolean"})
 
 add_defines("VK_NO_PROTOTYPES")
 
@@ -58,13 +64,33 @@ target("VulkanTests")
         remove_files("Source/VulkanTests/Core/Profiling.cpp")
     end
 
-    set_pcxxheader("Include/VulkanTests/pch.hpp")
+    if has_config("vk-validation-layers") then
+        add_defines("VK_TESTS_VALIDATION_LAYERS")
+    end
+        
+    if has_config("vk-validation-layers-gpu-assisted") then
+        add_defines("VK_TESTS_VALIDATION_LAYERS_GPU_ASSISTED")
+    end
+    
+    if has_config("vk-validation-layers-best-practices") then
+        add_defines("VK_TESTS_VALIDATION_LAYERS_BEST_PRACTICES")
+    end
+    
+    if has_config("vk-validation-layers-synchronization") then
+        add_defines("VK_TESTS_VALIDATION_LAYERS_SYNCHRONIZATION")
+    end
 
-    add_packages("glfw", "glm", "spdlog", "volk", "vulkan-memory-allocator", "glslang", "stb", "ktx")
+    if has_config("vk-portability") then
+        add_defines("VK_TESTS_PORTABILITY")
+    end
     
     if has_config("tracy") then
         add_defines("TRACY_ENABLE")
         add_packages("tracy")
     end
+
+    set_pcxxheader("Include/VulkanTests/pch.hpp")
+
+    add_packages("glfw", "glm", "spdlog", "volk", "vulkan-memory-allocator", "glslang", "stb", "ktx")
 
 includes("xmake/**.lua")

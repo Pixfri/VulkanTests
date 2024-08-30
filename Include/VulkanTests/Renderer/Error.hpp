@@ -10,8 +10,10 @@
 #include <VulkanTests/pch.hpp>
 
 #include <VulkanTests/Renderer/VkCommon.hpp>
+#include <VulkanTests/Renderer/Strings.hpp>
 
 #include <VulkanTests/Core/Logger.hpp>
+
 
 namespace VkTests {
 	class VulkanException : public std::runtime_error {
