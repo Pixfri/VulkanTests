@@ -12,9 +12,9 @@
 #include <vk_mem_alloc.h>
 #include <volk.h>
 
-#define VK_FLAGS_NONE 0 // For better code readability
+#define VK_TESTS_FLAGS_NONE 0 // For better code readability
 
-#define VK_DEFAULT_FENCE_TIMEOUT 100000000000 // Default fence timeout in nanoseconds
+#define VK_TESTS_DEFAULT_FENCE_TIMEOUT 100000000000 // Default fence timeout in nanoseconds
 
 template <class T>
 using ShaderStageMap = std::map<VkShaderStageFlagBits, T>;

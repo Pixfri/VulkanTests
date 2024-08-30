@@ -36,7 +36,7 @@ end
 add_defines("VK_NO_PROTOTYPES")
 
 target("VulkanTests")
-    set_kind("binary")
+    set_kind("static")
 
     set_targetdir("build/" .. outputdir .. "/VulkanTests/bin")
     set_objectdir("build/" .. outputdir .. "/VulkanTests/obj")

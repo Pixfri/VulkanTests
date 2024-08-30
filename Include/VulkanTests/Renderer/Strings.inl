@@ -1301,7 +1301,7 @@ namespace VkTests {
 		}
 	}
 
-	std::string BufferUsageToString(VkBufferUsageFlags flags) {
+	std::string BufferUsageToString(const VkBufferUsageFlags flags) {
 		return ToString<VkBufferUsageFlagBits>(flags,
 		                                       {
 			                                       {
