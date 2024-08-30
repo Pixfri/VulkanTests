@@ -46,6 +46,9 @@ namespace VkTests {
 		constexpr void Info(Args&&... args);
 
 		template <typename... Args>
+		constexpr void Debug(Args&&... args);
+
+		template <typename... Args>
 		constexpr void Warn(Args&&... args);
 
 		template <typename... Args>

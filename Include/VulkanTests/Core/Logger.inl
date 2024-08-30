@@ -20,6 +20,11 @@ namespace Log {
 	}
 
 	template <typename... Args>
+	constexpr void Debug(Args&&... args) {
+		Logger::GetLogger()->debug(std::forward<Args>(args)...);
+	}
+
+	template <typename... Args>
 	constexpr void Warn(Args&&... args) {
 		Logger::GetLogger()->warn(std::forward<Args>(args)...);
 	}
