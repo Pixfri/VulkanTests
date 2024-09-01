@@ -9,7 +9,8 @@ set_languages("cxx20")
 
 add_repositories("pixfri https://github.com/Pixfri/xmake-repo")
 
-add_requires("glfw", "glm", "spdlog v1.9.0", "volk", "vulkan-memory-allocator", "glslang", "stb")
+add_requires("glfw", "glm", "spdlog v1.9.0", "volk", "vulkan-memory-allocator", "stb", "glslang", 
+             "spirv-cross", "spirv-reflect", "spirv-tools")
 add_requires("ktx")
 
 local outputdir = "$(mode)-$(os)-$(arch)"
@@ -51,6 +52,9 @@ target("VulkanTests")
     add_headerfiles("Include/**.hpp", "Include/**.inl")
     add_includedirs("Include")
     
+    add_headerfiles("ThirdParty/**.hpp", "ThirdParty/**.h")
+    add_includedirs("ThirdParty")
+    
     if is_plat("windows", "mingw") then
         remove_headerfiles("Include/VulkanTests/Platform/Unix/**.hpp")
         remove_files("Source/VulkanTests/Platform/Unix/**.cpp")
@@ -91,6 +95,8 @@ target("VulkanTests")
 
     set_pcxxheader("Include/VulkanTests/pch.hpp")
 
-    add_packages("glfw", "glm", "spdlog", "volk", "vulkan-memory-allocator", "glslang", "stb", "ktx")
+    add_packages("glfw", "glm", "spdlog", "volk", "vulkan-memory-allocator", "glslang", "stb", "spirv-cross", 
+                 "spirv-reflect", "spirv-tools")
+    add_packages("ktx")
 
 includes("xmake/**.lua")

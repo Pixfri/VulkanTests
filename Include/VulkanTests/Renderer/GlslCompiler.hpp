@@ -30,16 +30,32 @@ namespace VkTests {
 		GlslCompiler& operator=(const GlslCompiler&) = delete;
 		GlslCompiler& operator=(GlslCompiler&&) = delete;
 
+		/**
+		 * @brief Set the glslang target environment to translate to when generating code.
+		 * @param targetLanguage The language to translate to.
+		 * @param targetLanguageVersion The version of the target language.
+		 */
 		static void SetTargetEnvironment(glslang::EShTargetLanguage targetLanguage,
 		                                 glslang::EShTargetLanguageVersion targetLanguageVersion);
 
+		/**
+		 * @brief Reset the glslang target environment to the default values.
+		 */
 		static void ResetTargetEnvironment();
 
-		bool CompileToSpirv(VkShaderStageFlagBits stage, const std::vector<UInt8>& glslSource,
-		                    const std::string& entryPoint, const ShaderVariant& shaderVariant,
-		                    std::vector<UInt32>& spirv, std::string& infoLog);
-
-	private:
+		/**
+		 * @brief Compiles GLSL to SPIR-V bytecode.
+		 * @param stage The Vulkan shader stage flag.
+		 * @param glslSource The GLSL source code to be compiled.
+		 * @param entryPoint The entry point name of the shader.
+		 * @param shaderVariant The shader variant.
+		 * @param[out] spirv The generated SPIR-V code.
+		 * @param[out] infoLog Stores any log messages during the compilation process. 
+		 * @return True if the compilation was successful, false otherwise.
+		 */
+		static bool CompileToSpirv(VkShaderStageFlagBits stage, const std::vector<UInt8>& glslSource,
+		                           const std::string& entryPoint, const ShaderVariant& shaderVariant,
+		                           std::vector<UInt32>& spirv, std::string& infoLog);
 	};
 }
 
